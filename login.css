@@ -1,0 +1,31 @@
+body{
+    background-color:white;
+}
+.login-container{
+    height:150vh;
+    justify-content: center;
+    gap: 20px;
+    width: 50%;
+    align-items:center;
+    margin: auto;
+}
+.input{
+    padding: 15px 25px;
+    border: none;
+    margin: 10px;
+    box-shadow: 4px 4px 8px gray;
+    border-radius: 5px;
+}
+.submit-btn{
+    padding: 15px 25px;
+    width:85%;
+    margin: auto;
+    border: none;
+    background-color: rgb(43, 121, 121);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+}
+.title{
+    color: darkturquoise;
+}
