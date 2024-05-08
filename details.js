@@ -62,7 +62,6 @@ const handleAppointment = () => {
   const selected = Array.from(status).find((button) => button.checked);
   const checkin = document.getElementById("checkintime").value;
   const buyer_id = localStorage.getItem("buyer_id");
-  console.log(buyer_id)
   const info = {
     booked_status: selected.value,
     check_in_time: checkin,
@@ -79,9 +78,47 @@ const handleAppointment = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      
+      window.location.href = "index.html";
       console.log(data)
        
     });
 };
+const loadBuyertId = () => {
+  const user_id = localStorage.getItem("user_id");
+  console.log("user",user_id);
+
+  fetch(`https://hotel-book-v78k.onrender.com/hotel/buyers/?user_id=${user_id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("hello", data)
+      if (data[0]) {
+        const buyer_id = data[0].id;
+        console.log("buyer",buyer_id)
+        localStorage.setItem("buyer_id",buyer_id)
+      } else {
+        addbuyer(user_id);
+      }
+    });
+};
+const addbuyer = (user_id) => {
+  const inf = {
+          user:user_id,
+             };
+
+  console.log(inf);
+  fetch("https://hotel-book-v78k.onrender.com/hotel/buyers/", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(inf),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      
+      console.log(data)
+    });
+}
+
+
+
+loadBuyertId();
 getparams();

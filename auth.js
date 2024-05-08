@@ -31,6 +31,7 @@ const handleRegistration = (event) => {
       })
         .then((res) => res.json())
         .then((data) => console.log(data));
+       window.location.href = "login.html";
     } else {
       document.getElementById("error").innerText =
         "pass must contain eight characters, at least one letter, one number and one special character:";
